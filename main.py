@@ -3,15 +3,19 @@ import pandas as pd
 from pyzbar.pyzbar import decode
 from PIL import Image
 from github import Github
+import os
 
-# GitHub Configuration
-GITHUB_TOKEN = 'https://github.com/kopiadjie/apps_dapi.git'
+TOKEN = os.getenv("GITHUB_TOKEN")  # Pastikan Anda telah mengatur variabel ini di sistem Anda
+g = Github(TOKEN)
+
+REPO_NAME = "kopiadjie/apps_dapi"
+repo = g.get_repo(REPO_NAME)
+
+
+
 REPO_NAME = 'apps_dapi'
 FILE_PATH = 'data.csv'
 
-# Initialize GitHub
-g = Github(GITHUB_TOKEN)
-repo = g.get_repo(REPO_NAME)
 
 # Function to load data from GitHub
 def load_data():
